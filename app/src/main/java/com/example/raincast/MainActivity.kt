@@ -11,6 +11,7 @@ import com.example.raincast.data.repoImpl.WeatherRepositoryImpl
 import com.example.raincast.data.service.WeatherApiService
 import com.example.raincast.domain.repository.weather.WeatherRepository
 import com.example.raincast.presentation.view.Home
+import com.example.raincast.presentation.view.MainScreen
 import com.example.raincast.presentation.viewModel.WeatherViewModel
 import kotlin.getValue
 
@@ -51,7 +52,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             //ui can access state
             //button can call api
-            Home(viewModel = viewModel)
+
+            MainScreen(viewModel = viewModel)
             /*ViewModel ke functions call kar sakte ho
 (e.g. viewModel.getWeatherForCity("Noida"))
 
