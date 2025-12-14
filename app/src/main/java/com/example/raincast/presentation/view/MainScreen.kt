@@ -66,11 +66,11 @@ fun MainScreen(viewModel: WeatherViewModel) {
 
     var context = LocalContext.current
     var city by remember { mutableStateOf("") }
-    val weatherState = viewModel.weatherState // GET ALL STATE LOADDING ,ERROR,SUCCESS
+    val weatherState = viewModel.weatherState // GET ALL STATE LOADING ,ERROR,SUCCESS
     val snackbarHostState = remember { SnackbarHostState() }
 
 
-// RECOMPOSE WHEN SNACKBAR MESSAGE CHANGE
+// RECOMPOSE WHEN SNACK BAR MESSAGE CHANGE
     LaunchedEffect(key1 = viewModel.snackbarMessage) {
         viewModel.snackbarMessage?.let {
             snackbarHostState.showSnackbar(message = it)
@@ -216,11 +216,11 @@ fun MainScreen(viewModel: WeatherViewModel) {
 @Composable
 fun WeatherScreen(weather: WeatherDTO
 ) {
-    val temperature = weather.main.temp.toInt()
-    val weatherCondition = weather.weather.firstOrNull()?.main ?: "Unknown"
-    val weatherDescription = weather.weather.firstOrNull()?.description ?: "Unknown weather condition"
-    val humidity = weather.main.humidity
-    val windspeed = weather.wind.speed
+    val temperature = weather.main?.temp?.toInt()
+    val weatherCondition = weather.weather?.firstOrNull()?.main ?: "Unknown"
+    val weatherDescription = weather.weather?.firstOrNull()?.description ?: "Unknown weather condition"
+    val humidity = weather.main?.humidity
+    val windspeed = weather.wind?.speed
 
 
 
@@ -256,14 +256,14 @@ fun WeatherScreen(weather: WeatherDTO
 
                 Spacer(modifier = Modifier.width(5.dp))
                 Text(
-                    text = weather.name,
+                    text = weather.name.toString(),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onPrimaryContainer
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 Text(
-                    text = weather.sys.country,
+                    text = weather.sys?.country.toString(),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onPrimaryContainer
@@ -351,7 +351,7 @@ fun WeatherScreen(weather: WeatherDTO
                         )
                         Spacer(modifier = Modifier.height(5.dp))
                         Text(
-                            text = " ${weather.main.humidity} %",
+                            text = " ${weather.main?.humidity} %",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -382,7 +382,7 @@ fun WeatherScreen(weather: WeatherDTO
                         )
                         Spacer(modifier = Modifier.height(5.dp))
                         Text(
-                            text = " ${weather.main.pressure} %",
+                            text = " ${weather.main?.pressure} %",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold
                         )

@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.raincast.data.repoImpl.WeatherRepositoryImpl
 import com.example.raincast.data.service.WeatherApiService
 import com.example.raincast.domain.repository.weather.WeatherRepository
-import com.example.raincast.presentation.view.Home
+
 import com.example.raincast.presentation.view.MainScreen
 import com.example.raincast.presentation.viewModel.WeatherViewModel
 import kotlin.getValue
@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
     //Yeh tumhara OpenWeatherMap API key hai.
     //
     //WeatherApiService ko ye key lagega taaki woh authorized API calls kar sake.
-    private val apikay = "f451542febb21c67c62945b581717d7e"
+    private val apikay = "56f2a39067fc8ba601545dd45f40e492"
 
     //lazy keyword ensure karta hai ki object sirf tab create ho jab zarurat ho.
     //Yani, WeatherApiService tabhi banega jab pehli baar use hoga.

@@ -4,9 +4,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Main(
-    val temp: Double,
-    val humidity: Int,
-    val pressure: Int
+    val temp: Double? = null,
+    val humidity: Int? = null,
+    val pressure: Int? = null
 )
 /*
 @Serializable

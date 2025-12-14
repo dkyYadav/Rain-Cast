@@ -47,6 +47,23 @@ class WeatherViewModel(
                Agar success, toh Result.Success set ho jaata hai → UI weather show karega*/
             try {
                 val weatherData = weatherRepository.getWeather(city.trim())
+
+                // check if important field are missing
+
+                val noData =
+                    weatherData.main == null ||
+                    weatherData.weather.isNullOrEmpty() ||
+                    weatherData.wind == null ||
+                    weatherData.name == null
+
+                if (noData){
+                    // show  message to ui
+                    weatherState = Result.Error("Weather Data is Not Available")
+                    snackbarMessage = "Weather Data is Not Available"
+                    return@launch
+
+                }
+                // if data is valid so show data
                 weatherState = Result.success(weatherData)
                 Log.d("WeatherViewModel", "Weather data fetched successfully: $weatherData")
 
